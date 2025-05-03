@@ -23,9 +23,7 @@ func snippetView(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	msg := fmt.Sprintf("Display a specific snippet with ID %d", id)
-
-	w.Write([]byte (msg))//--> Displays a snippet with a specific ID
+	fmt.Fprintf(w, "Display a specific snippet with ID %d", id)
 }
 
 func snippetCreate(w http.ResponseWriter, r *http.Request) {
@@ -39,11 +37,11 @@ func main() {
 
 	mux:= http.NewServeMux() //--> creates a routing system 
 
-	mux.HandleFunc(GET "/{$}", home) //--> maps / path to home handler
+	mux.HandleFunc("GET /{$}", home) //--> maps / path to home handler
 
-	mux.HandleFunc(GET "/snippet/view/{id}", snippetView) //--> maps /snippet/view to snippetView handler, uses {id} wildcard segment
+	mux.HandleFunc("GET /snippet/view/{id}", snippetView) //--> maps /snippet/view to snippetView handler, uses {id} wildcard segment
 
-	mux.HandleFunc(POST "/snippet/create", snippetCreate) // --> maps /snippet/create to snippetCreate handler
+	mux.HandleFunc("POST /snippet/create", snippetCreate) // --> maps /snippet/create to snippetCreate handler
 
 	log.Print("starting server on :4000") //--> log starting server on port :4000 to the terminal
 
