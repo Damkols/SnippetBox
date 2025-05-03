@@ -21,7 +21,9 @@ func main() {
 
 	mux:= http.NewServeMux() //--> creates a routing system 
 
-	mux.HandleFunc("/", home) //--> maps a particular path to a specific route
+	mux.HandleFunc("/", home) //--> maps / path to home handler
+
+	mux.HandleFunc("/snippet/view", snippetView) //--> maps /snippet/view to snippetView handler
 
 	log.Print("starting server on :4000") //--> log starting server on port :4000 to the terminal
 
