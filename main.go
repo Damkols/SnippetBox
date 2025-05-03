@@ -33,11 +33,11 @@ func main() {
 
 	mux:= http.NewServeMux() //--> creates a routing system 
 
-	mux.HandleFunc("/{$}", home) //--> maps / path to home handler
+	mux.HandleFunc(GET "/{$}", home) //--> maps / path to home handler
 
-	mux.HandleFunc("/snippet/view/{id}", snippetView) //--> maps /snippet/view to snippetView handler, uses {id} wildcard segment
+	mux.HandleFunc(GET "/snippet/view/{id}", snippetView) //--> maps /snippet/view to snippetView handler, uses {id} wildcard segment
 
-	mux.HandleFunc("/snippet/create", snippetCreate) // --> maps /snippet/create to snippetCreate handler
+	mux.HandleFunc(POST "/snippet/create", snippetCreate) // --> maps /snippet/create to snippetCreate handler
 
 	log.Print("starting server on :4000") //--> log starting server on port :4000 to the terminal
 
