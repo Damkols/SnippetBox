@@ -25,6 +25,8 @@ func main() {
 
 	mux.HandleFunc("/snippet/view", snippetView) //--> maps /snippet/view to snippetView handler
 
+	mux.HandlerFunc("/snippet/create", snippetCreate) // --> maps /snippet/create to snippetCreate handler
+
 	log.Print("starting server on :4000") //--> log starting server on port :4000 to the terminal
 
 	err:= http.ListenAndServe(":4000", mux) //--> check for errors
