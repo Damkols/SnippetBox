@@ -4,7 +4,7 @@ import (
 	"log"
 	"strconv"
 	"fmt"
-"net/http"
+	"net/http"
 )
 
 func home(w http.ResponseWriter, r *http.Request) {
@@ -26,6 +26,9 @@ func snippetView(w http.ResponseWriter, r *http.Request) {
 }
 
 func snippetCreate(w http.ResponseWriter, r *http.Request) {
+
+	w.WriteHeader(http.StatusCreated) //--> using WriteHeader to send status codes
+
 	w.Write([]byte ("Create a snippet")) //--> Displays Create a snippet
 }
 
