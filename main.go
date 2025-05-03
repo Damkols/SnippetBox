@@ -2,6 +2,8 @@ package main
 
 import (
 	"log"
+	"strconv"
+	"fmt"
 "net/http"
 )
 
@@ -10,7 +12,17 @@ func home(w http.ResponseWriter, r *http.Request) {
 }
 
 func snippetView(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte ("Display a specific snippet")) //--> Displays a specific snippet
+
+	id, err := strconv.Atoi(r.PathValue("id")) //--> extract wildcard Id value and conv to integer
+
+	if err != nil || id < 1 { //--> if err is not nill and id is not greater than 1 return NotFound
+		http.NotFound(w,r)
+		return
+	}
+
+	msg := fmt.Sprintf("Display a specific snippet with ID %d", id)
+
+	w.Write([]byte (msg))//--> Displays a snippet with a specific ID
 }
 
 func snippetCreate(w http.ResponseWriter, r *http.Request) {
@@ -23,7 +35,7 @@ func main() {
 
 	mux.HandleFunc("/{$}", home) //--> maps / path to home handler
 
-	mux.HandleFunc("/snippet/view", snippetView) //--> maps /snippet/view to snippetView handler
+	mux.HandleFunc("/snippet/view/{id}", snippetView) //--> maps /snippet/view to snippetView handler, uses {id} wildcard segment
 
 	mux.HandleFunc("/snippet/create", snippetCreate) // --> maps /snippet/create to snippetCreate handler
 
