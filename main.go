@@ -9,7 +9,7 @@ func home(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("Hello from Snippet Box")) //--> Displays the text on home page
 }
 
-func snippetView(w htttp.ResponseWriter, r *http.Request) {
+func snippetView(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte ("Display a specific snippet")) //--> Displays a specific snippet
 }
 
@@ -25,7 +25,7 @@ func main() {
 
 	mux.HandleFunc("/snippet/view", snippetView) //--> maps /snippet/view to snippetView handler
 
-	mux.HandlerFunc("/snippet/create", snippetCreate) // --> maps /snippet/create to snippetCreate handler
+	mux.HandleFunc("/snippet/create", snippetCreate) // --> maps /snippet/create to snippetCreate handler
 
 	log.Print("starting server on :4000") //--> log starting server on port :4000 to the terminal
 
