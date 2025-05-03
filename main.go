@@ -21,7 +21,7 @@ func main() {
 
 	mux:= http.NewServeMux() //--> creates a routing system 
 
-	mux.HandleFunc("/", home) //--> maps / path to home handler
+	mux.HandleFunc("/{$}", home) //--> maps / path to home handler
 
 	mux.HandleFunc("/snippet/view", snippetView) //--> maps /snippet/view to snippetView handler
 
