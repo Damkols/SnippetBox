@@ -10,6 +10,13 @@ func home(w http.ResponseWriter, r *http.Request) {
 
     w.Header().Add("Server", "Go") //--> setting response header map, header name: Server, header value: Go
 
+	ts, err := template.ParseFiles("./ui/html/pages/home.tmpl.html")
+
+	if err != nil {
+		log.Print(err.Error())
+		http.Error(w,"Internal Server Error", http.StatusInternalServerError)
+	}
+	
     w.Write([]byte("Hello from Snippet Box")) //--> Displays the text on home page
 }
 
