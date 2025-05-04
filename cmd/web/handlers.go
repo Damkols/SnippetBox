@@ -12,7 +12,13 @@ func home(w http.ResponseWriter, r *http.Request) {
 
     w.Header().Add("Server", "Go") //--> setting response header map, header name: Server, header value: Go
 
-	ts, err := template.ParseFiles("./ui/html/pages/home.tmpl.html") //--> Parse home tmpl file
+	files:= []string{
+		"./ui/html/base.tmpl.html",
+		"./ui/html/pages/home.tmpl.html",
+		"./ui/html/pages/title.tmpl.html",
+	 } //--> path to template files
+
+	ts, err := template.ParseFiles(files...) //--> Parse home tmpl file
 
 	if err != nil {
 		log.Print(err.Error())
@@ -20,7 +26,7 @@ func home(w http.ResponseWriter, r *http.Request) {
 		return
 	} //-->  catch error if any
 
-	err = ts.Execute(w, nil) //--> execute parsed tmpl file
+	err = ts.ExecuteTemplate(w, "base", nil) //--> execute parsed tmpl file
 
 	if err != nil {
 		log.Print(err.Error())
