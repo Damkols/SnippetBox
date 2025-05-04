@@ -16,6 +16,7 @@ func home(w http.ResponseWriter, r *http.Request) {
 		"./ui/html/base.tmpl.html",
 		"./ui/html/pages/home.tmpl.html",
 		"./ui/html/pages/title.tmpl.html",
+		"./ui/html/partials/nav.tmpl.html",
 	 } //--> path to template files
 
 	ts, err := template.ParseFiles(files...) //--> Parse home tmpl file
