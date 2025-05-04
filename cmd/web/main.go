@@ -7,7 +7,11 @@ import (
 
 func main() {
 
+	fileServer := http.FileServer(http.Dir("./ui/static/")) //--> get static files
+
     mux:= http.NewServeMux() //--> creates a routing system 
+	
+	mux.Handle("GET /static/", http.StripPrefix("/static",fileServer)) //--> Get static files and use strip prefix to strip leading /static
 
     mux.HandleFunc("GET /{$}", home) //--> maps / path to home handler
 
