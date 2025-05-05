@@ -1,7 +1,6 @@
 package main
 
 import (
-    "log"
     "net/http"
     "flag"
     "log/slog"
@@ -32,6 +31,7 @@ func main() {
 
     err:= http.ListenAndServe(*addr, mux) //--> check for errors
 
-    log.Fatal(err) //--> if there is an error log it to the terminal
+    logger.Error(err.Error()) //--> if there is an error log it to the terminal
 
+    os.Exit(1)
 }
