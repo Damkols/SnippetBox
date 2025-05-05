@@ -31,7 +31,7 @@ func main() {
 
     mux.HandleFunc("GET /{$}", app.home) //--> app.home creates a method value, maps / path to home handler also ensures when a request comes in home handler is able to use dependencies from the stored address
 
-    mux.HandleFunc("GET /snippet/view/{id}", snippetView) //--> maps /snippet/view to snippetView handler, uses {id} wildcard segment
+    mux.HandleFunc("GET /snippet/view/{id}", app.snippetView) //--> maps /snippet/view to snippetView handler, uses {id} wildcard segment
 
     mux.HandleFunc("POST /snippet/create", snippetCreate) // --> maps /snippet/create to snippetCreate handler
 

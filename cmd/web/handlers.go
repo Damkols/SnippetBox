@@ -36,7 +36,7 @@ func (app *application) home(w http.ResponseWriter, r *http.Request) { //--> met
 
 }
 
-func snippetView(w http.ResponseWriter, r *http.Request) {
+func (app *application) snippetView(w http.ResponseWriter, r *http.Request) {
 
     id, err := strconv.Atoi(r.PathValue("id")) //--> extract wildcard Id value and conv to integer
 
