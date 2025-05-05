@@ -33,7 +33,7 @@ func main() {
 
     mux.HandleFunc("GET /snippet/view/{id}", app.snippetView) //--> maps /snippet/view to snippetView handler, uses {id} wildcard segment
 
-    mux.HandleFunc("POST /snippet/create", snippetCreate) // --> maps /snippet/create to snippetCreate handler
+    mux.HandleFunc("POST /snippet/create", app.snippetCreate) // --> maps /snippet/create to snippetCreate handler
 
     logger.Info("starting server", "addr", *addr) //--> log starting server on port :4000 to the terminal
 
