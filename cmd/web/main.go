@@ -8,7 +8,7 @@ import (
 )
 
 type application struct{ //--> this struct is a blueprint for what our application struct should look like, we will use it for dependency injection
-    logger: *slog.Logger
+    logger *slog.Logger
 }
 
 func main() {
@@ -20,7 +20,7 @@ func main() {
     logger:= slog.New(slog.NewTextHandler(os.Stdout, nil)) //--> initializing a structured logger
 
     app := &application{ //--> creates a new struct using the application blueprint, get the memory address and store it in app
-        logger: logger //--> stores the memory address of our initialized structured logger
+        logger: logger, //--> stores the memory address of our initialized structured logger
     }
 
 	fileServer := http.FileServer(http.Dir("./ui/static/")) //--> get static files
