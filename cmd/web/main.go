@@ -4,13 +4,16 @@ import (
     "log"
     "net/http"
     "flag"
+    "log/slog"
 )
 
 func main() {
 
-    addr := flag.String("addr", ":4000", "HTTP network address")
+    addr := flag.String("addr", ":4000", "HTTP network address") //--> command line flags
 
     flag.Parse()
+
+    logger:= slog.New(slog.NewTextHandler(os.Stdout, nil)) //--> initializing a structured logger
 
 	fileServer := http.FileServer(http.Dir("./ui/static/")) //--> get static files
 
