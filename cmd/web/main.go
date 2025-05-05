@@ -5,6 +5,7 @@ import (
     "net/http"
     "flag"
     "log/slog"
+    "os"
 )
 
 func main() {
@@ -27,7 +28,7 @@ func main() {
 
     mux.HandleFunc("POST /snippet/create", snippetCreate) // --> maps /snippet/create to snippetCreate handler
 
-    log.Printf("starting server on %s", *addr) //--> log starting server on port :4000 to the terminal
+    logger.Info("starting server", "addr", *addr) //--> log starting server on port :4000 to the terminal
 
     err:= http.ListenAndServe(*addr, mux) //--> check for errors
 
