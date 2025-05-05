@@ -29,7 +29,7 @@ func main() {
 	
 	mux.Handle("GET /static/", http.StripPrefix("/static",fileServer)) //--> Get static files and use strip prefix to strip leading /static
 
-    mux.HandleFunc("GET /{$}", home) //--> maps / path to home handler
+    mux.HandleFunc("GET /{$}", app.home) //--> app.home creates a method value, maps / path to home handler also ensures when a request comes in home handler is able to use dependencies from the stored address
 
     mux.HandleFunc("GET /snippet/view/{id}", snippetView) //--> maps /snippet/view to snippetView handler, uses {id} wildcard segment
 
