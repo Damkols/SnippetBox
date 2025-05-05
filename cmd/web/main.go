@@ -7,6 +7,10 @@ import (
 
 func main() {
 
+    addr := flag.String("addr", ":4000", "HTTP network address")
+
+    flag.Parse()
+
 	fileServer := http.FileServer(http.Dir("./ui/static/")) //--> get static files
 
     mux:= http.NewServeMux() //--> creates a routing system 
@@ -19,7 +23,7 @@ func main() {
 
     mux.HandleFunc("POST /snippet/create", snippetCreate) // --> maps /snippet/create to snippetCreate handler
 
-    log.Print("starting server on :4000") //--> log starting server on port :4000 to the terminal
+    log.Printf("starting server on %s" *addr) //--> log starting server on port :4000 to the terminal
 
     err:= http.ListenAndServe(":4000", mux) //--> check for errors
 
