@@ -29,8 +29,7 @@ func (app *application) home(w http.ResponseWriter, r *http.Request) { //--> met
 	err = ts.ExecuteTemplate(w, "base", nil) //--> execute parsed tmpl file
 
 	if err != nil {
-		log.Print(err.Error())
-		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+		app.serverError(w, r, err)
 	} //--> catch error if any
 
 }
