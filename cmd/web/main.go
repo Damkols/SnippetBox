@@ -23,21 +23,9 @@ func main() {
         logger: logger, //--> stores the memory address of our initialized structured logger
     }
 
-	fileServer := http.FileServer(http.Dir("./ui/static/")) //--> get static files
-
-    mux:= http.NewServeMux() //--> creates a routing system 
-	
-	mux.Handle("GET /static/", http.StripPrefix("/static",fileServer)) //--> Get static files and use strip prefix to strip leading /static
-
-    mux.HandleFunc("GET /{$}", app.home) //--> app.home creates a method value, maps / path to home handler also ensures when a request comes in home handler is able to use dependencies from the stored address
-
-    mux.HandleFunc("GET /snippet/view/{id}", app.snippetView) //--> maps /snippet/view to snippetView handler, uses {id} wildcard segment
-
-    mux.HandleFunc("POST /snippet/create", app.snippetCreate) // --> maps /snippet/create to snippetCreate handler
-
     logger.Info("starting server", "addr", *addr) //--> log starting server on port :4000 to the terminal
 
-    err:= http.ListenAndServe(*addr, mux) //--> check for errors
+    err:= http.ListenAndServe(*addr, app.routes()) //--> check for errors
 
     logger.Error(err.Error()) //--> if there is an error log it to the terminal
 
