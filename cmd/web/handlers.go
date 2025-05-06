@@ -22,8 +22,7 @@ func (app *application) home(w http.ResponseWriter, r *http.Request) { //--> met
 	ts, err := template.ParseFiles(files...) //--> Parse home tmpl file
 
 	if err != nil {
-		log.Print(err.Error())
-		http.Error(w,"Internal Server Error", http.StatusInternalServerError)
+		app.serverError(w, r, err)
 		return
 	} //-->  catch error if any
 
