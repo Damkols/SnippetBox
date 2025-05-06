@@ -5,7 +5,6 @@ import (
     "fmt"
     "net/http"
 	"html/template"
-	"log"
 )
 
 func (app *application) home(w http.ResponseWriter, r *http.Request) { //--> method of type application
