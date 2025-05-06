@@ -5,5 +5,9 @@ import (
 )
 
 func (app *application) serverError(w http.ResponseWriter, r *http.Request, err error) {
-	
+	var (
+		method = r.Method
+		uri = r.URL.RequestURI()
+	)
+
 }
