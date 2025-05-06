@@ -10,4 +10,6 @@ func (app *application) serverError(w http.ResponseWriter, r *http.Request, err 
 		uri = r.URL.RequestURI()
 	)
 
+	app.logger.Error(err.Error(), "method", method, "uri", uri)
+
 }
