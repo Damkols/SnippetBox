@@ -12,3 +12,7 @@ type Snippet struct { //--> Snippet type to hold data for an individual snippet
 	Created time.Time
 	Expires time.Time
 }
+
+type SnippetModel struct {
+	DB *sql.DB
+}
