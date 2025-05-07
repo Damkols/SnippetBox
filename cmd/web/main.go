@@ -36,3 +36,20 @@ func main() {
 
     os.Exit(1)
 }
+
+
+func openDB(dsn string) (*sql.DB, error) {  //--> openDB func wraps sql.Open() and returns a sql.DB connection pool
+    db, err := sql.Open("mysql", dsn)
+    if err != nil {
+        return nil.err
+    }
+
+    err = db.Ping()
+
+    if err != nil {
+        db.Close()
+        return nil, err
+    }
+
+    return db, nil
+}
