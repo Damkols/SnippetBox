@@ -5,6 +5,9 @@ import (
     "flag"
     "log/slog"
     "os"
+    "database/sql"
+
+    _"github.com/go-sql-driver/mysql"
 )
 
 type application struct{ //--> this struct is a blueprint for what our application struct should look like, we will use it for dependency injection
@@ -14,6 +17,8 @@ type application struct{ //--> this struct is a blueprint for what our applicati
 func main() {
 
     addr := flag.String("addr", ":4000", "HTTP network address") //--> command line flags
+
+    dsn:= flag.String("dsn", "web:pass@/snippetbox?parseTime=true", "MySQL data source name") //--> cmd flag for MYSQL DSN string
 
     flag.Parse()
 
