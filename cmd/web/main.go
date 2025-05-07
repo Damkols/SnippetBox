@@ -37,6 +37,7 @@ func main() {
 
     app := &application{ //--> creates a new struct using the application blueprint, get the memory address and store it in app
         logger: logger, //--> stores the memory address of our initialized structured logger
+        snippets: &models.SnippetModel{DB: db} //--> add connection pool to application dependencies
     }
 
     logger.Info("starting server", "addr", *addr) //--> log starting server on port :4000 to the terminal
