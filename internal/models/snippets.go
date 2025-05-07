@@ -20,3 +20,7 @@ type SnippetModel struct {
 func (m *SnippetModel) Insert(title string, content string, expires int) (int, error) {
 	return 0, nil
 } //--> func inserts a new snippet into the database
+
+func (m *SnippetModel) Get(id int) (Snippet, error) {
+	return Snippet{}, nil
+} //--> func returns a specific snippet based on its ID
