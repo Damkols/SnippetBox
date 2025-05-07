@@ -24,3 +24,7 @@ func (m *SnippetModel) Insert(title string, content string, expires int) (int, e
 func (m *SnippetModel) Get(id int) (Snippet, error) {
 	return Snippet{}, nil
 } //--> func returns a specific snippet based on its ID
+
+func (m *SnippetModel) Latest() ([]Snippet, error) {
+	return nil, nil
+} //--> func returns 10 most recently created snippets
