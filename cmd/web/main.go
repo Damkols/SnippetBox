@@ -30,6 +30,8 @@ func main() {
         os.Exit(1)
     }
 
+    defer db.Close() //--> defer call to db.Close(), this allows connection pool to close before main() func exits
+
     app := &application{ //--> creates a new struct using the application blueprint, get the memory address and store it in app
         logger: logger, //--> stores the memory address of our initialized structured logger
     }
