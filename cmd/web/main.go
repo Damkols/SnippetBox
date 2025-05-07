@@ -24,6 +24,12 @@ func main() {
 
     logger:= slog.New(slog.NewTextHandler(os.Stdout, nil)) //--> initializing a structured logger
 
+    db, err := openDB(*dsn)
+    if err != nil {
+        logger.Error(err.Error())
+        os.Exit(1)
+    }
+
     app := &application{ //--> creates a new struct using the application blueprint, get the memory address and store it in app
         logger: logger, //--> stores the memory address of our initialized structured logger
     }
