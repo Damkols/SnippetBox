@@ -16,3 +16,7 @@ type Snippet struct { //--> Snippet type to hold data for an individual snippet
 type SnippetModel struct {
 	DB *sql.DB
 }
+
+func (m *SnippetModel) Insert(title string, content string, expires int) (int, error) {
+	return 0, nil
+} //--> func inserts a new snippet into the database
