@@ -7,6 +7,8 @@ import (
     "os"
     "database/sql"
 
+    "snippetbox.usmkols.net/internal/models"
+
     _"github.com/go-sql-driver/mysql"
 )
 
