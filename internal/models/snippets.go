@@ -26,6 +26,12 @@ func (m *SnippetModel) Insert(title string, content string, expires int) (int, e
 	if err != nil {
 		return 0, err
 	}
+
+	id, err := result.LastInsertId() //--> gets the ID of inserted data
+	if err != nil {
+		return 0, err
+	}
+
 } //--> func inserts a new snippet into the database
 
 func (m *SnippetModel) Get(id int) (Snippet, error) {
