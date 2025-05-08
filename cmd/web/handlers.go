@@ -47,7 +47,9 @@ func (app *application) snippetView(w http.ResponseWriter, r *http.Request) {
 
 func (app *application) snippetCreate(w http.ResponseWriter, r *http.Request) {
 
-    w.WriteHeader(http.StatusCreated) //--> using WriteHeader to send status codes
-
-    w.Write([]byte ("Create a snippet")) //--> Displays Create a snippet
+	//--> Dummy data
+	title := "0 snail"
+	content := "0 snail\nClimb Mount Fuji,\nBut slowly, slowly!\n\n- Kobayashi Issa"
+	expires := 7
+   
 }
