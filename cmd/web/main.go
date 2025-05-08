@@ -37,12 +37,12 @@ func main() {
 
     app := &application{ //--> creates a new struct using the application blueprint, get the memory address and store it in app
         logger: logger, //--> stores the memory address of our initialized structured logger
-        snippets: &models.SnippetModel{DB: db} //--> add connection pool to application dependencies
+        snippets: &models.SnippetModel{DB: db}, //--> add connection pool to application dependencies
     }
 
     logger.Info("starting server", "addr", *addr) //--> log starting server on port :4000 to the terminal
 
-    err:= http.ListenAndServe(*addr, app.routes()) //--> check for errors
+    err = http.ListenAndServe(*addr, app.routes()) //--> check for errors
 
     logger.Error(err.Error()) //--> if there is an error log it to the terminal
 
@@ -53,7 +53,7 @@ func main() {
 func openDB(dsn string) (*sql.DB, error) {  //--> openDB func wraps sql.Open() and returns a sql.DB connection pool
     db, err := sql.Open("mysql", dsn)
     if err != nil {
-        return nil.err
+        return nil, err
     }
 
     err = db.Ping()
