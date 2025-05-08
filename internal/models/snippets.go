@@ -42,6 +42,8 @@ func (m *SnippetModel) Get(id int) (Snippet, error) {
 
 	row := m.DB.QueryRow(stmt, id) //--> Using QueryRow method on connection pool to execute the SQL statement
 
+	var s Snippet //--> initialize a new Snippet
+
 	return Snippet{}, nil
 } //--> func returns a specific snippet based on its ID
 
