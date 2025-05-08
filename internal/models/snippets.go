@@ -21,7 +21,7 @@ func (m *SnippetModel) Insert(title string, content string, expires int) (int, e
 
 	stmt := `INSERT INTO snippets (title, content, created, expires) VALUES(?, ?, UTC_TIMESTAMP(), DATE_ADD(UTC_TIMESTAMP(), INTERVAL ? DAY))` //--> SQL statement to insert data to our database
 
-	db, err := m.DB.Exec(stmt, title, content, expires) //--> use Exec method to execute statement
+	result, err := m.DB.Exec(stmt, title, content, expires) //--> use Exec method to execute statement
 
 	if err != nil {
 		return 0, err
