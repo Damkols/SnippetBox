@@ -53,6 +53,8 @@ func (m *SnippetModel) Get(id int) (Snippet, error) {
 		}
 	}
 
+	return s, nil //--> return filled struct
+
 } //--> func returns a specific snippet based on its ID
 
 func (m *SnippetModel) Latest() ([]Snippet, error) {
