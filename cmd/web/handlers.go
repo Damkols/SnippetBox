@@ -5,6 +5,9 @@ import (
     "fmt"
     "net/http"
 	"html/template"
+	"errors"
+
+	"snippetbox.usmkols.net/internal/models"
 )
 
 func (app *application) home(w http.ResponseWriter, r *http.Request) { //--> method of type application
@@ -37,12 +40,22 @@ func (app *application) snippetView(w http.ResponseWriter, r *http.Request) {
 
     id, err := strconv.Atoi(r.PathValue("id")) //--> extract wildcard Id value and conv to integer
 
-    if err != nil || id < 1 { //--> if err is not nill and id is not greater than 1 return NotFound
+    if err != nil || id < 1 { //--> if err is not nil and id is not greater than 1 return NotFound
         http.NotFound(w,r)
         return
     }
 
-    fmt.Fprintf(w, "Display a specific snippet with ID %d", id)
+	snippet, err := app.snippets.Get(id)
+	if err != nil {
+		if errors.Is(err, models.ErrNoRecord) {
+			http.NotFound(w,r)
+		} else {
+			app.serverError(w, r, err)
+		}
+		return
+	}
+
+    fmt.Fprintf(w, "%+v", snippet) //--> write snippetdata as a plain-text HTTP response body
 }
 
 func (app *application) snippetCreate(w http.ResponseWriter, r *http.Request) {
