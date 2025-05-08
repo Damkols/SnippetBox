@@ -40,6 +40,8 @@ func (m *SnippetModel) Get(id int) (Snippet, error) {
 
 	stmt := `SELECT id, title, content, created, expires FROM snippets WHERE expires > UTC_TIMESTAMP() AND id = ?` //--> SQL statement to get data from database
 
+	row := m.DB.QueryRow(stmt, id) //--> Using QueryRow method on connection pool to execute the SQL statement
+
 	return Snippet{}, nil
 } //--> func returns a specific snippet based on its ID
 
