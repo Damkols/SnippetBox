@@ -67,4 +67,6 @@ func (m *SnippetModel) Latest() ([]Snippet, error) {
 		return nil, err
 	} //--> erorr handling
 
+	defer rows.Close() //--> defer rows.Close before Latest method returns something
+
 } //--> func returns 10 most recently created snippets
