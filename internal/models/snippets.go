@@ -87,4 +87,6 @@ func (m *SnippetModel) Latest() ([]Snippet, error) {
 		return nil, err
 	} //--> error handling for rows.Next to check if the iteration ran succesfully
 
+	return snippets, nil
+
 } //--> func returns 10 most recently created snippets
