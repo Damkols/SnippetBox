@@ -19,6 +19,10 @@ func (app *application) home(w http.ResponseWriter, r *http.Request) { //--> met
 		app.serverError(w, r, err)
 		return
 	}
+
+	for _, snippet := range snippets {
+		fmt.Fprintf(w, "%+v\n", snippet)
+	}
 	
 
 	files:= []string{
