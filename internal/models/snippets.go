@@ -72,6 +72,9 @@ func (m *SnippetModel) Latest() ([]Snippet, error) {
 	var snippets []Snippet //--> intializing an empty struct to hold snippet struct from DB
 
 	for rows.Next() { //--> iterate through rows
+
+		var s Snippet //--> new snippet struct to copy data into
+
 		
 	}
 
