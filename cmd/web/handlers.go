@@ -14,6 +14,9 @@ func (app *application) home(w http.ResponseWriter, r *http.Request) { //--> met
 
     w.Header().Add("Server", "Go") //--> setting response header map, header name: Server, header value: Go
 
+	snippets, err := app.snippets.Latest() //--> get snippets from Latest() method
+	
+
 	files:= []string{
 		"./ui/html/base.tmpl.html",
 		"./ui/html/pages/home.tmpl.html",
