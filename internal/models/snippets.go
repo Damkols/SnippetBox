@@ -83,4 +83,8 @@ func (m *SnippetModel) Latest() ([]Snippet, error) {
 		snippets = append(snippets, s) //--> append each snippet struct to a slice of snippets struct
 	}
 
+	if err = rows.Err(); err != nil {
+		return nil, err
+	} //--> error handling for rows.Next to check if the iteration ran succesfully
+
 } //--> func returns 10 most recently created snippets
