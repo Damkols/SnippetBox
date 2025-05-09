@@ -71,4 +71,8 @@ func (m *SnippetModel) Latest() ([]Snippet, error) {
 
 	var snippets []Snippet //--> intializing an empty struct to hold snippet struct from DB
 
+	for rows.Next() { //--> iterate through rows
+		
+	}
+
 } //--> func returns 10 most recently created snippets
