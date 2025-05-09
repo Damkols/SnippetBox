@@ -75,7 +75,8 @@ func (m *SnippetModel) Latest() ([]Snippet, error) {
 
 		var s Snippet //--> new snippet struct to copy data into
 
-		
+		err = rows.Scan(&s.ID, &s.Title, &s.Content, &s.Created, &s.Expires) //--> rows.Scan to copy values into Snippet struct
+
 	}
 
 } //--> func returns 10 most recently created snippets
