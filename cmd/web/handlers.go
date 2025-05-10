@@ -73,7 +73,7 @@ func (app *application) snippetView(w http.ResponseWriter, r *http.Request) {
 	 } //--> path to template files
 
 	 ts, err := template.ParseFiles(files...)
-	 err != nil {
+	 if err != nil {
 		app.serverError(w, r, err)
 		return
 	 }
