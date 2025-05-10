@@ -78,7 +78,11 @@ func (app *application) snippetView(w http.ResponseWriter, r *http.Request) {
 		return
 	 }
 
-	 err = ts.ExecuteTemplate(w, "base", snippet)//--> last parameter (snippet) represents dynamic data
+	 data:= templateData{
+		Snippet: snippet,
+	 }
+
+	 err = ts.ExecuteTemplate(w, "base", data)//--> last parameter (snippet) represents dynamic data
 	 if err != nil {
 		app.serverError(w, r, err)
 	 }
