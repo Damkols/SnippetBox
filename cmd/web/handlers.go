@@ -73,7 +73,11 @@ func (app *application) snippetView(w http.ResponseWriter, r *http.Request) {
 	 } //--> path to template files
 
 	 ts, err := template.ParseFiles(files...)
-	 
+	 err != nil {
+		app.serverError(w, r, err)
+		return
+	 }
+
 
     fmt.Fprintf(w, "%+v", snippet) //--> write snippetdata as a plain-text HTTP response body
 }
