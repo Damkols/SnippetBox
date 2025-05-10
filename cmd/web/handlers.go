@@ -66,6 +66,12 @@ func (app *application) snippetView(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	files:= []string{
+		"./ui/html/base.tmpl.html",
+		"./ui/html/partials/home.tmpl.html",
+		"./ui/html/pages/view.tmpl.html",
+	 } //--> path to template files
+
     fmt.Fprintf(w, "%+v", snippet) //--> write snippetdata as a plain-text HTTP response body
 }
 
