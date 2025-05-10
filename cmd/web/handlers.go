@@ -78,10 +78,10 @@ func (app *application) snippetView(w http.ResponseWriter, r *http.Request) {
 		return
 	 }
 
-	 err = ts.ExecuteTemplate(w, "base", snippet)
-
-
-    fmt.Fprintf(w, "%+v", snippet) //--> write snippetdata as a plain-text HTTP response body
+	 err = ts.ExecuteTemplate(w, "base", snippet)//--> last parameter (snippet) represents dynamic data
+	 if err != nil {
+		app.serverError(w, r, err)
+	 }
 }
 
 func (app *application) snippetCreate(w http.ResponseWriter, r *http.Request) {
