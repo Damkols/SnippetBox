@@ -40,7 +40,7 @@ func (app *application) home(w http.ResponseWriter, r *http.Request) { //--> met
 	} //-->  catch error if any
 
 	data := templateData{
-		Snippets: snippets
+		Snippets: snippets,
 	}
 
 	err = ts.ExecuteTemplate(w, "base", data) //--> execute parsed tmpl file
