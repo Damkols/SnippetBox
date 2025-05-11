@@ -20,9 +20,9 @@ func (app *application) home(w http.ResponseWriter, r *http.Request) { //--> met
 		return
 	}
 
-	for _, snippet := range snippets {
-		fmt.Fprintf(w, "%+v\n", snippet)
-	}
+	// for _, snippet := range snippets {
+	// 	fmt.Fprintf(w, "%+v\n", snippet)
+	// }
 	
 
 	files:= []string{
@@ -39,7 +39,11 @@ func (app *application) home(w http.ResponseWriter, r *http.Request) { //--> met
 		return
 	} //-->  catch error if any
 
-	err = ts.ExecuteTemplate(w, "base", nil) //--> execute parsed tmpl file
+	data := templateData{
+		Snippets: snippets
+	}
+
+	err = ts.ExecuteTemplate(w, "base", data) //--> execute parsed tmpl file
 
 	if err != nil {
 		app.serverError(w, r, err)
