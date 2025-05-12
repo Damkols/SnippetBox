@@ -1,5 +1,9 @@
 package main
-import "snippetbox.usmkols.net/internal/models"
+import (
+	"html/template"
+	"path/filepath"
+	"snippetbox.usmkols.net/internal/models"
+)
 
 
 type templateData struct {
