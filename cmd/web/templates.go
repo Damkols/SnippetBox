@@ -24,5 +24,11 @@ func newTemplateCache() (map[string]*template.Template, error) {
 
 		name := filepath.Base(page) //--> extract filename e.g home.tmpl.html
 
+		files := []string{
+			"ui/html/base.tmpl",
+			"ui/html/partials/nav.tmpl",
+			page
+		} //--> get all filepaths
+
 	}
 }
