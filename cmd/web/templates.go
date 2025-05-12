@@ -34,5 +34,9 @@ func newTemplateCache() (map[string]*template.Template, error) {
 		if err != nil{
 			return nil, err
 		}
+
+		cache[name] = ts //-> add the template set to map
 	}
+
+	return cache, nil //--> return map
 }
