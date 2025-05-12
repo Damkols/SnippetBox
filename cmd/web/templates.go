@@ -31,5 +31,8 @@ func newTemplateCache() (map[string]*template.Template, error) {
 		} //--> get all filepaths
 
 		ts, err: template.ParseFiles(files...)
+		if err != nil{
+			return nil, err
+		}
 	}
 }
