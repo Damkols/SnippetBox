@@ -20,6 +20,9 @@ func newTemplateCache() (map[string]*template.Template, error) {
 		return nil, err
 	}
 
-	for _, page := range pages{
+	for _, page := range pages{ //--> map over pages
+
+		name := filepath.Base(page) //--> extract filename e.g home.tmpl.html
+
 	}
 }
