@@ -13,5 +13,8 @@ type templateData struct {
 
 
 func newTemplateCache() (map[string]*template.Template, error) {
+	cache := map[string]*template.Template{} //--> Initialize a new map to act as cache
+
+	pages, err := filepath.Glob("./ui/html/pages/*.tmpl.html") //--> get all tmpl.html files in pages directory
 	
 }
