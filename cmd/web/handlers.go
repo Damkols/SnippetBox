@@ -20,34 +20,9 @@ func (app *application) home(w http.ResponseWriter, r *http.Request) { //--> met
 		return
 	}
 
-	// for _, snippet := range snippets {
-	// 	fmt.Fprintf(w, "%+v\n", snippet)
-	// }
-	
-
-	files:= []string{
-		"./ui/html/base.tmpl.html",
-		"./ui/html/pages/home.tmpl.html",
-		"./ui/html/pages/title.tmpl.html",
-		"./ui/html/partials/nav.tmpl.html",
-	 } //--> path to template files
-
-	ts, err := template.ParseFiles(files...) //--> Parse home tmpl file
-
-	if err != nil {
-		app.serverError(w, r, err)
-		return
-	} //-->  catch error if any
-
-	data := templateData{
-		Snippets: snippets,
-	}
-
-	err = ts.ExecuteTemplate(w, "base", data) //--> execute parsed tmpl file
-
-	if err != nil {
-		app.serverError(w, r, err)
-	} //--> catch error if any
+	app.render(w, r, http.StatusOK, "home.tmpl", templateData{
+		Snippets: snippets
+	})
 
 }
 
