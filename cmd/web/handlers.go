@@ -45,27 +45,31 @@ func (app *application) snippetView(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	files:= []string{
-		"./ui/html/base.tmpl.html",
-		"./ui/html/partials/nav.tmpl.html",
-		"./ui/html/pages/home.tmpl.html",
-		"./ui/html/pages/view.tmpl.html",
-	 } //--> path to template files
+	app.render(w, r, http.StatusOK, "view.tmpl", templateData{
+		Snippet: snippet
+	})
 
-	 ts, err := template.ParseFiles(files...)
-	 if err != nil {
-		app.serverError(w, r, err)
-		return
-	 }
+	// files:= []string{
+	// 	"./ui/html/base.tmpl.html",
+	// 	"./ui/html/partials/nav.tmpl.html",
+	// 	"./ui/html/pages/home.tmpl.html",
+	// 	"./ui/html/pages/view.tmpl.html",
+	//  } //--> path to template files
 
-	 data:= templateData{
-		Snippet: snippet,
-	 }
+	//  ts, err := template.ParseFiles(files...)
+	//  if err != nil {
+	// 	app.serverError(w, r, err)
+	// 	return
+	//  }
 
-	 err = ts.ExecuteTemplate(w, "base", data)//--> last parameter (snippet) represents dynamic data
-	 if err != nil {
-		app.serverError(w, r, err)
-	 }
+	//  data:= templateData{
+	// 	Snippet: snippet,
+	//  }
+
+	//  err = ts.ExecuteTemplate(w, "base", data)//--> last parameter (snippet) represents dynamic data
+	//  if err != nil {
+	// 	app.serverError(w, r, err)
+	//  }
 }
 
 func (app *application) snippetCreate(w http.ResponseWriter, r *http.Request) {
