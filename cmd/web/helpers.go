@@ -32,4 +32,7 @@ func (app *application) render(w http.ResponseWriter, r *http.Request, status in
 	}
 
 	w.WriteHeader(status)
+
+	err := ts.ExecuteTemplate(w, "base", data)
+
 }
