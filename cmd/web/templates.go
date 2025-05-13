@@ -25,13 +25,13 @@ func newTemplateCache() (map[string]*template.Template, error) {
 
 		name := filepath.Base(page) //--> extract filename e.g home.tmpl.html
 
-		files := []string{
-			"ui/html/base.tmpl",
-			"ui/html/partials/nav.tmpl",
-			page
-		} //--> get all filepaths
+		// files := []string{
+		// 	"ui/html/base.tmpl",
+		// 	"ui/html/partials/nav.tmpl",
+		// 	page
+		// } //--> get all filepaths
 
-		ts, err: template.ParseFiles(files...)
+		ts, err: template.ParseFiles("ui/html/base.tmpl")
 		if err != nil{
 			return nil, err
 		}
