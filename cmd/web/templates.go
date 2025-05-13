@@ -9,6 +9,7 @@ import (
 type templateData struct {
 	Snippet models.Snippet
 	Snippets []models.Snippet
+	templateCache map[string]*template.Template
 }
 
 
