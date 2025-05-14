@@ -46,9 +46,10 @@ func (app *application) snippetView(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	app.render(w, r, http.StatusOK, "view.tmpl", templateData{
-		Snippet: snippet,
-	})
+	data := app.newTemplateData(r)
+	data.Snippets = snippets
+
+	app.render(w, r, http.StatusOK, "view.tmpl", data)
 
 	// files:= []string{
 	// 	"./ui/html/base.tmpl.html",
