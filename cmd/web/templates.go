@@ -7,6 +7,7 @@ import (
 
 
 type templateData struct {
+	currentYear int
 	Snippet models.Snippet
 	Snippets []models.Snippet
 	templateCache map[string]*template.Template
