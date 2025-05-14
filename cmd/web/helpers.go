@@ -42,9 +42,5 @@ func (app *application) render(w http.ResponseWriter, r *http.Request, status in
 
 	w.WriteHeader(status)
 
-	err := ts.ExecuteTemplate(w, "base", data)
-
-	if err != nil {
-		app.serverError(w, r, err)
-	}
+	buf.Write(w)
 }
