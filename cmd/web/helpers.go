@@ -4,6 +4,7 @@ import (
 	"net/http"
 	"runtime/debug"
 	"fmt"
+	"bytes"
 )
 
 func (app *application) serverError(w http.ResponseWriter, r *http.Request, err error) {
@@ -30,6 +31,8 @@ func (app *application) render(w http.ResponseWriter, r *http.Request, status in
 		app.serverError(w, r, err)
 		return
 	}
+
+	buf:= new(bytes.Buffer)
 
 	w.WriteHeader(status)
 
