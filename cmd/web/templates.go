@@ -3,6 +3,7 @@ import (
 	"html/template"
 	"path/filepath"
 	"snippetbox.usmkols.net/internal/models"
+	"time"
 )
 
 
@@ -11,6 +12,10 @@ type templateData struct {
 	Snippet models.Snippet
 	Snippets []models.Snippet
 	templateCache map[string]*template.Template
+}
+
+func humanDate(t time.Time) string {
+	return t.format("02 Jan 2006 at 15:04")
 }
 
 
