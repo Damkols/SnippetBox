@@ -6,6 +6,7 @@ import (
     "log/slog"
     "os"
     "database/sql"
+    "html/template"
 
     "snippetbox.usmkols.net/internal/models"
 
@@ -15,6 +16,7 @@ import (
 type application struct{ //--> this struct is a blueprint for what our application struct should look like, we will use it for dependency injection
     logger *slog.Logger
     snippets *models.SnippetModel
+    templateCache map[string]*template.Template
 }
 
 func main() {

@@ -4,7 +4,6 @@ import (
     "strconv"
     "fmt"
     "net/http"
-	"html/template"
 	"errors"
 
 	"snippetbox.usmkols.net/internal/models"
