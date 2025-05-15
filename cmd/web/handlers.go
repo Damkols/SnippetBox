@@ -11,8 +11,6 @@ import (
 
 func (app *application) home(w http.ResponseWriter, r *http.Request) { //--> method of type application
 
-    w.Header().Add("Server", "Go") //--> setting response header map, header name: Server, header value: Go
-
 	snippets, err := app.snippets.Latest() //--> get snippets from Latest() method
 	if err != nil{
 		app.serverError(w, r, err)
