@@ -23,7 +23,7 @@ func main() {
 
     addr := flag.String("addr", ":4000", "HTTP network address") //--> command line flags
 
-    dsn:= flag.String("dsn", "web:kols53@/snippetbox?parseTime=true", "MySQL data source name") //--> cmd flag for MYSQL DSN string
+    dsn:= flag.String("dsn", "web:pass@/snippetbox?parseTime=true", "MySQL data source name") //--> cmd flag for MYSQL DSN string
 
     flag.Parse()
 
@@ -48,7 +48,7 @@ func main() {
     app := &application{ //--> creates a new struct using the application blueprint, get the memory address and store it in app
         logger: logger, //--> stores the memory address of our initialized structured logger
         snippets: &models.SnippetModel{DB: db}, //--> add connection pool to application dependencies
-        templateCache: templateCache,
+        templateCache: templateCache, //--> add template cache to app dependencies
     }
 
     logger.Info("starting server", "addr", *addr) //--> log starting server on port :4000 to the terminal
