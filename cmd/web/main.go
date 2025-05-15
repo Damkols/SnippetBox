@@ -23,7 +23,7 @@ func main() {
 
     addr := flag.String("addr", ":4000", "HTTP network address") //--> command line flags
 
-    dsn:= flag.String("dsn", "web:pass@/snippetbox?parseTime=true", "MySQL data source name") //--> cmd flag for MYSQL DSN string
+    dsn:= flag.String("dsn", "web:kols53@/snippetbox?parseTime=true", "MySQL data source name") //--> cmd flag for MYSQL DSN string
 
     flag.Parse()
 
@@ -36,6 +36,14 @@ func main() {
     }
 
     defer db.Close() //--> defer call to db.Close(), this allows connection pool to close before main() func exits
+
+    //--> Initialize a new template cache
+    templateCache, err := newTemplateCache()
+    if err != nil {
+        logger.Error(err.Error())
+        os.Exit(1)
+    }
+
 
     app := &application{ //--> creates a new struct using the application blueprint, get the memory address and store it in app
         logger: logger, //--> stores the memory address of our initialized structured logger

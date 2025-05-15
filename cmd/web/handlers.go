@@ -22,7 +22,7 @@ func (app *application) home(w http.ResponseWriter, r *http.Request) { //--> met
 	data := app.newTemplateData(r)
 	data.Snippets = snippets
 
-	app.render(w, r, http.StatusOK, "home.tmpl", data)
+	app.render(w, r, http.StatusOK, "home.tmpl.html", data)
 
 }
 
@@ -48,7 +48,7 @@ func (app *application) snippetView(w http.ResponseWriter, r *http.Request) {
 	data := app.newTemplateData(r)
 	data.Snippet = snippet
 
-	app.render(w, r, http.StatusOK, "view.tmpl", data)
+	app.render(w, r, http.StatusOK, "view.tmpl.html", data)
 
 	// files:= []string{
 	// 	"./ui/html/base.tmpl.html",
