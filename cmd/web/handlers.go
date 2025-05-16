@@ -51,23 +51,23 @@ func (app *application) snippetView(w http.ResponseWriter, r *http.Request) {
 
 func (app *application) snippetCreatePost(w http.ResponseWriter, r *http.Request) {
 
-	//--> Dummy data
-	title := "0 snail"
-	content := "0 snail\nClimb Mount Fuji,\nBut slowly, slowly!\n\n- Kobayashi Issa"
-	expires := 7
+	// //--> Dummy data
+	// title := "0 snail"
+	// content := "0 snail\nClimb Mount Fuji,\nBut slowly, slowly!\n\n- Kobayashi Issa"
+	// expires := 7
 
 	err := r.ParseForm() //--> r.ParseForm adds any data in POST request body to r.PostForm map
 		if err != nil {
-		app.clientError(w, http.StatusBadRequest)
+		app.clientError(w, r, http.StatusBadRequest)
 		return
 	}
 
 	title := r.PostForm.Get("title") //--> use GET method on r.PostForm to get title from PostForm map
 	content := r.PostForm.Get("content") //--> use GET method on r.PostForm to get content from PostForm map
 
-	expires, err := strconv.Atoi(r.PostForm.GET("expires")) //--> use GET method on r.PostForm to get expires from PostForm map and convert to int
+	expires, err := strconv.Atoi(r.PostForm.Get("expires")) //--> use GET method on r.PostForm to get expires from PostForm map and convert to int
 	if err != nil {
-		app.clientError(w, r, err)
+		app.clientError(w, r, http.StatusBadRequest)
 		return
 	}
 

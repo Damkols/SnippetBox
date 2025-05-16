@@ -2,6 +2,7 @@ package main
 
 import (
 	"net/http"
+	"fmt"
 )
 
 func commonHeaders(next http.Handler) http.Handler {
@@ -19,7 +20,7 @@ func commonHeaders(next http.Handler) http.Handler {
 }
 
 func (app *application) logRequest(next http.Handler) http.Handler {
-	return http.HandleFunc(func(w http.ResponseWriter, r *http.Request){
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request){
 		var (
 			ip = r.RemoteAddr
 			proto = r.Proto
@@ -34,7 +35,7 @@ func (app *application) logRequest(next http.Handler) http.Handler {
 }
 
 func (app *application) recoverPanic(next http.Handler) http.Handler {
-	return http.HandleFunc(func(w http.ResponseWriter, r *http.Request){
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request){
 		defer func() {
 			if err := recover(); err != nil {
 				w.Header().Set("Connection", "close")
