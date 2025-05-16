@@ -62,6 +62,9 @@ func (app *application) snippetCreatePost(w http.ResponseWriter, r *http.Request
 		return
 	}
 
+	title := r.PostForm.Get("title") //--> use GET method on r.PostForm to get title from PostForm map
+
+
 	id, err := app.snippets.Insert(title, content, expires) //--> Pass dummy data to SnippetModel.Insert() method and get ID back
 	if err != nil {
 		app.serverError(w, r, err)
