@@ -57,6 +57,10 @@ func (app *application) snippetCreatePost(w http.ResponseWriter, r *http.Request
 	expires := 7
 
 	err := r.ParseForm() //--> r.ParseForm adds any data in POST request body to r.PostForm map
+		if err != nil {
+		app.clientError(w, http.StatusBadRequest)
+		return
+	}
 
 	id, err := app.snippets.Insert(title, content, expires) //--> Pass dummy data to SnippetModel.Insert() method and get ID back
 	if err != nil {
