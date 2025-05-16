@@ -66,6 +66,10 @@ func (app *application) snippetCreatePost(w http.ResponseWriter, r *http.Request
 	content := r.PostForm.Get("content") //--> use GET method on r.PostForm to get content from PostForm map
 
 	expires, err := strconv.Atoi(r.PostForm.GET("expires")) //--> use GET method on r.PostForm to get expires from PostForm map and convert to int
+	if err != nil {
+		app.clientError(w, r, err)
+		return
+	}
 
 
 	id, err := app.snippets.Insert(title, content, expires) //--> Pass dummy data to SnippetModel.Insert() method and get ID back
