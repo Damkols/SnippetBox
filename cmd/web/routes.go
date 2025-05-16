@@ -16,7 +16,7 @@ func (app *application) routes() http.Handler {
 
     mux.HandleFunc("GET /snippet/view/{id}", app.snippetView) //--> maps /snippet/view to snippetView handler, uses {id} wildcard segment
 
-    mux.HandleFunc("POST /snippet/create", app.snippetCreate) // --> maps /snippet/create to snippetCreate handler
+    mux.HandleFunc("POST /snippet/create", app.snippetCreatePost) // --> maps /snippet/create to snippetCreate handler
 
 	return app.recoverPanic(logRequest(commonHeaders(mux)))
 
