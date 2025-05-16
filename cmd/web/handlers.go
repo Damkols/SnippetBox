@@ -63,6 +63,7 @@ func (app *application) snippetCreatePost(w http.ResponseWriter, r *http.Request
 	}
 
 	title := r.PostForm.Get("title") //--> use GET method on r.PostForm to get title from PostForm map
+	content := r.PostForm.Get("content") //--> use GET method on r.PostForm to get content from PostForm map
 
 
 	id, err := app.snippets.Insert(title, content, expires) //--> Pass dummy data to SnippetModel.Insert() method and get ID back
