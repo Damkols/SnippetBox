@@ -77,6 +77,8 @@ func (app *application) snippetCreatePost(w http.ResponseWriter, r *http.Request
 
 	if strings.TrimSpace(title) == "" {
 		fieldErrors["title"] = "This field cannot be blank"
+	} else if utf8.RuneCountInString(title) > 100 {
+		fieldErrors["title"] = "This field cannot be more than 100 characters long"
 	}
 
 
