@@ -73,6 +73,8 @@ func (app *application) snippetCreatePost(w http.ResponseWriter, r *http.Request
 		return
 	}
 
+	fieldErrors := make(map[string]string) //--> initialize a map to hold any validation errors
+
 
 	id, err := app.snippets.Insert(title, content, expires) //--> Pass dummy data to SnippetModel.Insert() method and get ID back
 	if err != nil {
