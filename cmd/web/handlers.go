@@ -75,6 +75,10 @@ func (app *application) snippetCreatePost(w http.ResponseWriter, r *http.Request
 
 	fieldErrors := make(map[string]string) //--> initialize a map to hold any validation errors
 
+	if strings.TrimSpace(title) == "" {
+		fieldErrors["title"] = "This field cannot be blank"
+	}
+
 
 	id, err := app.snippets.Insert(title, content, expires) //--> Pass dummy data to SnippetModel.Insert() method and get ID back
 	if err != nil {
