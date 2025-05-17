@@ -5,6 +5,8 @@ import (
     "fmt"
     "net/http"
 	"errors"
+	"strings"
+	"unicode/utf8"
 
 	"snippetbox.usmkols.net/internal/models"
 )
