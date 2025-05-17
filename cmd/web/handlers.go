@@ -85,6 +85,11 @@ func (app *application) snippetCreatePost(w http.ResponseWriter, r *http.Request
 		fieldErrors["expires"] = "This field must equal 1, 7 or 365"
 	}
 
+	if len(fieldErrors) > 0 {
+		fmt.Fprint(w, fieldErrors)
+		return
+	}
+
 	id, err := app.snippets.Insert(title, content, expires) //--> Pass dummy data to SnippetModel.Insert() method and get ID back
 	if err != nil {
 		app.serverError(w, r, err)
