@@ -11,6 +11,10 @@ import (
 	"snippetbox.usmkols.net/internal/models"
 )
 
+type snippetCreateForm struct {
+
+}
+
 func (app *application) home(w http.ResponseWriter, r *http.Request) { //--> method of type application
 
 	snippets, err := app.snippets.Latest() //--> get snippets from Latest() method
