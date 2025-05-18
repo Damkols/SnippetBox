@@ -84,16 +84,15 @@ func (app *application) snippetCreatePost(w http.ResponseWriter, r *http.Request
 		FieldErrors: map[string]string{}
 	}
 
-	fieldErrors := make(map[string]string) //--> initialize a map to hold any validation errors
 
 	if strings.TrimSpace(title) == "" {
-		fieldErrors["title"] = "This field cannot be blank"
+		form.FieldErrors["title"] = "This field cannot be blank"
 	} else if utf8.RuneCountInString(title) > 100 {
-		fieldErrors["title"] = "This field cannot be more than 100 characters long"
+		form.FieldErrors["title"] = "This field cannot be more than 100 characters long"
 	}
 
-	if expires != 1 && expires != 7 && expires != 365 {
-		fieldErrors["expires"] = "This field must equal 1, 7 or 365"
+	if form.Expires != 1 && expires != 7 && expires != 365 {
+		form.FieldErrors["expires"] = "This field must equal 1, 7 or 365"
 	}
 
 	if len(fieldErrors) > 0 {
