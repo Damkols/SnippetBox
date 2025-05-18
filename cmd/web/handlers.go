@@ -71,13 +71,17 @@ func (app *application) snippetCreatePost(w http.ResponseWriter, r *http.Request
 		return
 	}
 
-	title := r.PostForm.Get("title") //--> use GET method on r.PostForm to get title from PostForm map
-	content := r.PostForm.Get("content") //--> use GET method on r.PostForm to get content from PostForm map
-
 	expires, err := strconv.Atoi(r.PostForm.Get("expires")) //--> use GET method on r.PostForm to get expires from PostForm map and convert to int
 	if err != nil {
 		app.clientError(w, r, http.StatusBadRequest)
 		return
+	}
+
+	form := snippetCreateForm{
+		Title: r.PostForm.Get("title")
+		Content: r.PostForm.Get("content")
+		Expires: expires,
+		FieldErrors: map[string]string{}
 	}
 
 	fieldErrors := make(map[string]string) //--> initialize a map to hold any validation errors
