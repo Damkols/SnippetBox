@@ -12,7 +12,10 @@ import (
 )
 
 type snippetCreateForm struct {
-
+	Title string
+	Content string
+	Expires int
+	FieldErrors map[string]string
 }
 
 func (app *application) home(w http.ResponseWriter, r *http.Request) { //--> method of type application
