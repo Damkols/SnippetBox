@@ -9,6 +9,7 @@
   </div>
   <div>
     <label>Content:</label>
+    {{with .Form.FieldErrors.content}} {{end}}
     <textarea name="content"></textarea>
   </div>
   <div>
