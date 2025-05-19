@@ -9,7 +9,9 @@
   </div>
   <div>
     <label>Content:</label>
-    {{with .Form.FieldErrors.content}} {{end}}
+    {{with .Form.FieldErrors.content}}
+    <label class="error">{{.}}</label>
+    {{end}}
     <textarea name="content"></textarea>
   </div>
   <div>
