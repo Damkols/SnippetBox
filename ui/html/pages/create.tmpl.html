@@ -19,7 +19,17 @@
     {{with .Form.FieldErrors.expires}}
     <label class="error">{{.}}</label>
     {{end}}
-    <input type="radio" name="expires" value="365" checked />
+    <input
+      type="radio"
+      name="expires"
+      value="365"
+      {{if
+      (eq
+      .Form.Expires
+      365)}}
+      checked
+      {{end}}
+    />
     <input type="radio" name="expires" value="7" />
     <input type="radio" name="expires" value="1" />
   </div>
