@@ -2,6 +2,7 @@
 <form action="/snippet/create" method="POST">
   <div>
     <label>Title:</label>
+    {{with .Form.FieldErrors.title}} {{end}}
     <input type="text" name="title" />
   </div>
   <div>
