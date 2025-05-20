@@ -42,7 +42,17 @@
       checked
       {{end}}
     />
-    <input type="radio" name="expires" value="1" />
+    <input
+      type="radio"
+      name="expires"
+      value="1"
+      {{if
+      (eq
+      .Form.Expires
+      1)}}
+      checked
+      {{end}}
+    />
   </div>
   <div><input type="submit" value="Publish Snippet" /></div>
 </form>
