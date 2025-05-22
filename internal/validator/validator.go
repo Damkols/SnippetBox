@@ -32,3 +32,6 @@ func (v *Validator) CheckField(ok bool, key, message string) {
 	}
 }
 
+func NotBlank(value string) bool {
+	return strings.TrimSpace(value) != ""
+}
