@@ -15,6 +15,10 @@ func (v *Validator) Valid() bool {
 }
 
 func (v *Validator) AddFieldError(key, message string) {
-	
+
+	if v.FieldErrors == nil {
+		v.FieldErrors = make(map[string]string)
+	}
+
 }
 
